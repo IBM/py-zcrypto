@@ -18,7 +18,7 @@ pip3 install py_zcrypto
 # Install from local
 python3 -m venv venv --system-site-packages
 source venv/bin/activate
-pip3 install ./Python-Zcrypto
+pip3 install ./py-zcrypto
 ```
 
 ## Usage

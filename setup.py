@@ -20,10 +20,20 @@ def main():
         )
     ]
 
+    project_description = None
+    with open('README.md', 'r') as f:
+        project_description = f.read()
+
     setup(
         name="py_zcrypto",
         version="1.0.0",
         description="Python interface for accessing RACF Keyrings and key databases on z/OS",
+        long_description=project_description,
+        long_description_content_type='text/markdown',
+        license="License :: OSI Approved :: Apache Software License",
+        project_urls={
+            "Source Code": "https://github.com/IBM/py-zcrypto/",
+          },
         author="IBM",
         packages=find_packages(),
         install_requires=setup_requirements,
