@@ -26,7 +26,7 @@ def main():
 
     setup(
         name="py_zcrypto",
-        version="1.0.0",
+        version="1.0.1",
         description="Python interface for accessing RACF Keyrings and key databases on z/OS",
         long_description=project_description,
         long_description_content_type='text/markdown',

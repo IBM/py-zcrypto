@@ -89,7 +89,7 @@ def get_certificate_fromRACF():
 ## Notes
 - Error codes are Certificate Management Services (CMS) status codes in decimal format. These codes can be found in the header gskcms.h.
 
-- Additional details about the Certificate Management Services (CMS) API can be found [here] (https://www.ibm.com/docs/en/zos/2.5.0?topic=programming-certificate-management-services-cms-api-reference)
+- Additional details about the Certificate Management Services (CMS) API can be found [here](https://www.ibm.com/docs/en/zos/2.5.0?topic=programming-certificate-management-services-cms-api-reference)
 - Only use the pem encoded versions of certificates/public/private keys for python purposes.
 
 ## Docstrings
