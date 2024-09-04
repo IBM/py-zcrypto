@@ -9,7 +9,7 @@ def main():
         Extension(
             "py_zcrypto",
             ["./src/zcrypto.c", "./src/zcrypto_impl.c"],
-            ["./src/zcrypto.h"],
+            ["/usr/lpp/gskssl/include"],
             extra_link_args=[
                 "/usr/lpp/gskssl/lib/GSKCMS64.x",
                 "/usr/lpp/gskssl/lib/GSKSSL64.x",
