@@ -50,7 +50,7 @@ def get_keypair(ring_name, cert_name, key_name, password, keypair_name):
         print(str(e))
         return
 
-    export_keypair(py_zcrypto_obj, cert_name, key_name, password, keypair_name)
+    export_keypair(py_zcrypto_obj, cert_name, key_name, password, keypair_name, "output.pem")
 
     py_zcrypto_obj.close_database()
     

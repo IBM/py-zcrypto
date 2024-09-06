@@ -11,7 +11,7 @@ This module bundles together various py_zcrypto
 """
 
 
-def export_keypair(zcrypto_obj, cert_name, key_name, key_password, RACF_key_pair_label):
+def export_keypair(zcrypto_obj, cert_name, key_name, key_password, RACF_key_pair_label, pk_output_filename="key.pem"):
     """
     Exports a public/private key pair from a RACF keyring
     and converts both to pem format.
@@ -21,6 +21,7 @@ def export_keypair(zcrypto_obj, cert_name, key_name, key_password, RACF_key_pair
        key_name : the desired name of the key file
        key_password : password for key
        RACF_key_pair_label : the RACF label of an existing key pair
+       pk_output_filename : the filename of the private key in pem format, default: "key.pem"
     Returns:
        Nothing. If successful, 4 files are created.
        2 certificates (der,pem) and 2 keys (der and pem)
@@ -39,17 +40,17 @@ def export_keypair(zcrypto_obj, cert_name, key_name, key_password, RACF_key_pair
     zcrypto_obj.export_key_to_file(key_name, key_password, RACF_key_pair_label)
     zcrypto_obj.export_cert_to_file(cert_name, RACF_key_pair_label)
     convert_der_cert_to_pem(cert_name)
-    convert_p12_privatekey_to_pem(key_name, key_password)
+    convert_p12_privatekey_to_pem(key_name, key_password, pk_output_filename)
 
 
-def convert_p12_privatekey_to_pem(file_name, password):
+def convert_p12_privatekey_to_pem(file_name, password, pk_output_filename):
     if not file_name.endswith(".p12"):
         raise ValueError("File must be .pkcs12 type")
 
     with open(file_name, "rb") as file:
         p12 = crypto.load_pkcs12(file.read(), password)
 
-    with open("key.pem", "w") as file:
+    with open(pk_output_filename, "w") as file:
         file.write(
             crypto.dump_privatekey(crypto.FILETYPE_PEM, p12.get_privatekey()).decode(
                 "utf-8"
